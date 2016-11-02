@@ -178,27 +178,60 @@ document.getElementById('q12').innerHTML = change(5, 0, 0, 2)
 //        If the phone number is 11 digits and the first number is 1, trim the 1 and use the last 10 digits
 //        If the phone number is 11 digits and the first number is not 1, then it is a bad number.
 //        HINT: You may need to use the charAt method.
-
-
+function phoneTest(number){
+  let test = number.toString().split('')
+  console.log(test.length);
+  if (test.length>11 || test.length<10){
+    return 'error'
+  } else if (test.length===11 && test[0] !== '1') {
+    return 'error'
+  } else if (test.length===11 && test[0] === '1'){
+    number = test.splice(1, test.length).join('')
+    return number
+  } else {
+    return number
+  }
+}
+// console.log(phoneTest(14103701176));
 
 // B. Create a function that determines whether a parameter is a number or not.
 //     Iterate over the elements in the following array to determine if each is a number.
 //     HINT: You may need to use the isNaN method.
-       arrayOfAllTheThings = ["one", 23, {thingsWhalesLove: "beaches"}, "six hundred", 33, 6834, "5,435"]
+      let arrayOfAllTheThings = ["one", 23, {thingsWhalesLove: "beaches"}, "six hundred", 33, 6834, "5,435"]
 
-
+function arrNumTest (array){
+  for(let i=0; i<array.length; i++){
+    if(isNaN(array[i])){
+      console.log(array[i], ' is not a number')
+    } else {
+      console.log(array[i], ' IS A NUMBER')
+    }
+  }
+}
+// arrNumTest(arrayOfAllTheThings);
 
 // C. Create a die rolling function that accepts no parameters.
 //     It rolls two six-sided-dice, adds the two numbers together, and returns a roll value.
 //     Display the result in the HTML page.
 //     To get the random number rolled by each die, use Math.random and Math.floor.
-
-
+function twoDice(){
+  let die1 = Math.floor(Math.random()*6)+1
+  let die2 = Math.floor(Math.random()*6)+1
+  return die1+die2
+}
 
 // D. Using your die roll function above, figure out how many times it would take a user
 //     to get around a Monopoly board once. A monopoly board has 40 spaces total.
-
-
+var position = 0
+var turnCount = 0
+function monopolyMove(){
+  while(position<40){
+    position += twoDice()
+    turnCount++
+  }
+  return turnCount
+}
+// console.log(monopolyMove());
 
 // E. Write a function that takes a year from a user
 //    and reports whether or not it is a leap year.
@@ -208,3 +241,20 @@ document.getElementById('q12').innerHTML = change(5, 0, 0, 2)
 //        Except every year that is evenly divisible by 100
 //        Unless the year is also evenly divisible by 400
 //        For example, 1997 is not a leap year, but 1996 is. 1900 is not a leapyear, but 2000 is.
+
+function leapYearTest(year){
+  if (year%400 === 0) {
+    return 'it is a leap year'
+  } else if (year%100 === 0) {
+    return 'it is not a leap year'
+  } else if (year%4 === 0) {
+    return 'it is a leap year'
+  } else {
+    return 'it is not a leap year'
+  }
+}
+
+// console.log(leapYearTest(1997));
+// console.log(leapYearTest(1996));
+// console.log(leapYearTest(1900));
+// console.log(leapYearTest(2000));
