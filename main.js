@@ -141,8 +141,15 @@ document.getElementById('q10b').innerHTML = teamB
 //     Hint #1: You need to turn a string into an integer.
 //     Hint #2: Strings can be treated as arrays too.
 
-
-
+function addThree(x, y, z) {
+  return x.toString() + y.toString() + z.toString()
+}
+document.getElementById('q11Button').addEventListener('click', function(){
+  let x = document.getElementById('q11Input1').value
+  let y = document.getElementById('q11Input2').value
+  let z = document.getElementById('q11Input3').value
+  document.getElementById('q11').innerHTML = addThree(x, y, z)
+})
 
 
 // 12. You've finally gotten around to counting the change in your piggy bank.
@@ -150,21 +157,18 @@ document.getElementById('q10b').innerHTML = teamB
 //     The function should take each number of coins and multiply it times each coin's value.
 //     Finally, it should return the total amount of change you have in the following format: "$32.77"
 //     HINT: Understanding the toFixed method will help you with the format.
+function change(q, d, n, p){
+  let qVal = q*0.25
+  let dVal = d*0.1
+  let nVal = n*0.05
+  let pVal = p*0.01
+  let total = qVal + dVal + nVal + pVal
+  return "$" + total.toFixed(2)
+}
 
-
-
-
-
-
-
-
-
-
-
-
+document.getElementById('q12').innerHTML = change(5, 0, 0, 2)
 
 // ADVANCED TRACK
-
 
 
 // A. Develop a function that cleans up a phone number entered by a user.
